@@ -132,6 +132,7 @@ function App() {
     });
 
     socket.on("friendsListBack", friendsInfo => {
+      console.log('friendsInfo', friendsInfo)
       setFriendList(friendsInfo);
     });
 

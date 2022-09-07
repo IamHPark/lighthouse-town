@@ -4,7 +4,9 @@ import "./FriendsList.scss";
 
 export default function FriendList() {
   const { socket } = useContext(SocketContext);
+  console.log('socket', socket)
   const { friendList } = useContext(UserListContext);
+  console.log('friendList', friendList)
   const friendsNames = Object.keys(friendList); // [이름, 이름]
   const [toggle, setToggle] = useState(false);
 
@@ -18,6 +20,8 @@ export default function FriendList() {
   };
 
   useEffect(() => {
+    console.log('SEND!!!!')
+    console.log( {socketID: socket.id})
     socket.emit("friendsList", { socketID: socket.id });
     return () => {
       socket.disconnect();
